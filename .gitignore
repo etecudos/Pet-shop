@@ -1,0 +1,10 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.vscode/
+
+# Banco de dados (não deve ir para o GitHub)
+*.db
+*.sqlite
+*.sqlite3
