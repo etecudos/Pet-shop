@@ -1,7 +1,7 @@
 from datetime import date, datetime, time
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field
-
+from typing import Literal
 
 
 # ---------- Tabelas de domínio (UF e Porte) ----------
@@ -33,7 +33,7 @@ class PetCreateSchema(BaseModel):
 
     nome: str = Field(min_length=3, max_length=100, description="Nome do pet (3 a 100 caracteres)")
     raca: str = Field(min_length=3, max_length=50, description="Raça do pet (3 a 50 caracteres)")
-    idade: int = Field(gt=0, description="Idade do pet, em anos (deve ser maior que zero)")
+    idade: int = Field(ge=0, description="Idade do pet, em anos (deve ser maior que zero)")
     porte_id: int = Field(gt=0, description="id de um porte existente (ver GET /portes)")
 
 
@@ -198,7 +198,7 @@ class AgendamentoCreateSchema(BaseModel):
 
 
 class AgendamentoUpdateSchema(AgendamentoCreateSchema):
-    status: str = "Agendado"  # no update já pode fazer sentido mudar o status
+    status: Literal["Agendado", "Concluído", "Cancelado"] = "Agendado"  # no update já pode fazer sentido mudar o status
 
 
 # Resposta padrão: SEM o campo status (requisito 11)

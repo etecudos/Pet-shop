@@ -194,8 +194,8 @@ Os schemas de entrada (`schemas.py`) usam `Field` do Pydantic. Quando uma regra 
 | `telefone` | exatamente 11 dígitos com DDD (somente números) |
 | `cep` | exatamente 8 dígitos (somente números) |
 | `email` | e-mail válido (`EmailStr`), até 100 caracteres |
-| `idade`, `numero` e todos os `*_id` | número inteiro maior que zero |
-
+| | `idade` | número inteiro maior ou igual a zero |
+| `numero` e todos os `*_id` | número inteiro maior que zero |
 > `cpf`, `telefone` e `cep` são guardados como **texto** (e não inteiro) para preservar zeros à esquerda, como em CEP `01310100`. Se você tem um `pet.db` criado antes dessa mudança, apague-o: ele é recriado automaticamente ao iniciar a API.
 
 ### Já tenho um `pet.db` do schema antigo
